@@ -1,0 +1,7 @@
+{
+  "require": {
+    "jdesrosiers/silex-swagger-provider": "~1.0"
+  }
+}
+
+

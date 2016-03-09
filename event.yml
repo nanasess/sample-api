@@ -1,0 +1,40 @@
+eccube.event.app.request:
+  - [onAppRequest, NORMAL]
+eccube.event.app.controller:
+  - [onAppController, NORMAL]
+eccube.event.app.response:
+  - [onAppResponse, NORMAL]
+eccube.event.app.exception:
+  - [onAppException, NORMAL]
+eccube.event.app.terminate:
+  - [onAppTerminate, NORMAL]
+eccube.event.front.request:
+  - [onFrontRequest, NORMAL]
+eccube.event.front.controller:
+  - [onFrontController, NORMAL]
+eccube.event.front.response:
+  - [onFrontResponse, NORMAL]
+eccube.event.front.exception:
+  - [onFrontException, NORMAL]
+eccube.event.front.terminate:
+  - [onFrontTerminate, NORMAL]
+eccube.event.admin.request:
+  - [onAdminRequest, NORMAL]
+eccube.event.admin.controller:
+  - [onAdminController, NORMAL]
+eccube.event.admin.response:
+  - [onAdminResponse, NORMAL]
+eccube.event.admin.exception:
+  - [onAdminException, NORMAL]
+eccube.event.admin.terminate:
+  - [onAdminTerminate, NORMAL]
+eccube.event.route.homepage.request:
+  - [onRouteRequest, NORMAL]
+eccube.event.route.homepage.controller:
+  - [onRouteController, NORMAL]
+eccube.event.route.homepage.response:
+  - [onRouteResponse, NORMAL]
+eccube.event.route.homepage.exception:
+  - [onRouteException, NORMAL]
+eccube.event.route.homepage.terminate:
+  - [onRouteTerminate, NORMAL]

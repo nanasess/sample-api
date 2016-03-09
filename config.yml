@@ -1,0 +1,6 @@
+name: サンプルAPI
+code: SampleApi
+version: 1.0.0
+event: SampleApiEvent
+service:
+    - SampleApiServiceProvider
