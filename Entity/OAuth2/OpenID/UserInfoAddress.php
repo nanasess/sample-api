@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Entity\OAuth2\OpenID;
+namespace Plugin\SampleApi\Entity\OAuth2\OpenID;
 
 use Doctrine\ORM\Mapping as ORM;
 

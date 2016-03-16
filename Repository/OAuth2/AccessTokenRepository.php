@@ -1,9 +1,9 @@
 <?php
 
-namespace Eccube\Repository\OAuth2;
+namespace Plugin\SampleApi\Repository\OAuth2;
 
 use Doctrine\ORM\EntityRepository;
-use Eccube\Entity\OAuth2\AccessToken;
+use Plugin\SampleApi\Entity\OAuth2\AccessToken;
 use OAuth2\Storage\AccessTokenInterface;
 
 
@@ -29,11 +29,11 @@ class AccessTokenRepository extends EntityRepository implements AccessTokenInter
 
     public function setAccessToken($oauthToken, $clientIdentifier, $userEmail, $expires, $scope = null)
     {
-        $client = $this->_em->getRepository('Eccube\Entity\OAuth2\Client')
+        $client = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\Client')
                             ->findOneBy(array('client_identifier' => $clientIdentifier));
-        $user = $this->_em->getRepository('Eccube\Entity\OAuth2\User')
+        $user = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\User')
                             ->findOneBy(array('email' => $userEmail));
-        $AccessToken = new \Eccube\Entity\OAuth2\AccessToken();
+        $AccessToken = new \Plugin\SampleApi\Entity\OAuth2\AccessToken();
         $AccessToken->setPropertiesFromArray(array(
             'token'     => $oauthToken,
             'client'    => $client,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Repository\OAuth2\OpenID;
+namespace Plugin\SampleApi\Repository\OAuth2;
 
 use Doctrine\ORM\EntityRepository;
 use OAuth2\OpenID\Storage\UserClaimsInterface;

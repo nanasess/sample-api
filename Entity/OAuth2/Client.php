@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Entity\OAuth2;
+namespace Plugin\SampleApi\Entity\OAuth2;
 
 use Doctrine\ORM\Mapping as ORM;
 

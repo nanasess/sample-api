@@ -1,9 +1,9 @@
 <?php
 
-namespace Eccube\Repository\OAuth2;
+namespace Plugin\SampleApi\Repository\OAuth2;
 
 use Doctrine\ORM\EntityRepository;
-use Eccube\Entity\OAuth2\AuthorizationCode;
+use Plugin\SampleApi\Entity\OAuth2\AuthorizationCode;
 use OAuth2\Storage\AuthorizationCodeInterface;
 use OAuth2\OpenID\Storage\AuthorizationCodeInterface as OpenIDAuthorizationCodeInterface;
 
@@ -35,15 +35,15 @@ class AuthorizationCodeRepository extends EntityRepository implements Authorizat
 
     public function setAuthorizationCode($code, $clientIdentifier, $userEmail, $redirectUri, $expires, $scope = null, $id_token = null)
     {
-        $client = $this->_em->getRepository('Eccube\Entity\OAuth2\Client')
+        $client = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\Client')
             ->findOneBy(
                 array('client_identifier' => $clientIdentifier)
             );
-        $user = $this->_em->getRepository('Eccube\Entity\OAuth2\User')
+        $user = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\User')
             ->findOneBy(
                 array('email' => $userEmail)
             );
-        $AuthorizationCode = $this->_em->getRepository('Eccube\Entity\OAuth2\AuthorizationCode')
+        $AuthorizationCode = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\AuthorizationCode')
             ->findOneBy(
                 array('code' => $code)
             );
@@ -61,7 +61,7 @@ class AuthorizationCodeRepository extends EntityRepository implements Authorizat
                 )
             );
         } else {
-            $AuthorizationCode = new \Eccube\Entity\OAuth2\AuthorizationCode();
+            $AuthorizationCode = new \Plugin\SampleApi\Entity\OAuth2\AuthorizationCode();
             $AuthorizationCode->setPropertiesFromArray(
                 array(
                     'code'           => $code,

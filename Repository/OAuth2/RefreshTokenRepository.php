@@ -1,9 +1,9 @@
 <?php
 
-namespace Eccube\Repository\OAuth2;
+namespace Plugin\SampleApi\Repository\OAuth2;
 
 use Doctrine\ORM\EntityRepository;
-use Eccube\Entity\OAuth2\RefreshToken;
+use Plugin\SampleApi\Entity\OAuth2\RefreshToken;
 use OAuth2\Storage\RefreshTokenInterface;
 
 /**
@@ -40,15 +40,15 @@ class RefreshTokenRepository extends EntityRepository implements RefreshTokenInt
 
     public function setRefreshToken($refreshToken, $clientIdentifier, $userEmail, $expires, $scope = null)
     {
-        $client = $this->_em->getRepository('Eccube\Entity\OAuth2\Client')
+        $client = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\Client')
             ->findOneBy(
                 array('client_identifier' => $clientIdentifier)
             );
-        $user = $this->_em->getRepository('Eccube\Entity\OAuth2\User')
+        $user = $this->_em->getRepository('Plugin\SampleApi\Entity\OAuth2\User')
             ->findOneBy(
                 array('email' => $userEmail)
             );
-        $RefreshToken = new \Eccube\Entity\OAuth2\RefreshToken();
+        $RefreshToken = new \Plugin\SampleApi\Entity\OAuth2\RefreshToken();
         $RefreshToken->setPropertiesFromArray(array(
            'refresh_token'  => $refreshToken,
            'client'         => $client,

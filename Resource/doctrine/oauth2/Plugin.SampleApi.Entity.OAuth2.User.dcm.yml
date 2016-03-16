@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\User:
+Plugin\SampleApi\Entity\OAuth2\User:
   type: entity
   table: dtb_oauth_users
-  repositoryClass:  Eccube\Repository\OAuth2\UserRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\UserRepository
   id:
     id:
       type:   integer

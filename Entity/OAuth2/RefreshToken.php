@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Entity\OAuth2;
+namespace Plugin\SampleApi\Entity\OAuth2;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,12 +40,12 @@ class RefreshToken extends \Eccube\Entity\AbstractEntity
     private $scope;
 
     /**
-     * @var \Eccube\Entity\OAuth2\Client
+     * @var \Plugin\SampleApi\Entity\OAuth2\Client
      */
     private $client;
 
     /**
-     * @var \Eccube\Entity\OAuth2\User
+     * @var \Plugin\SampleApi\Entity\OAuth2\User
      */
     private $user;
 
@@ -178,10 +178,10 @@ class RefreshToken extends \Eccube\Entity\AbstractEntity
     /**
      * Set client
      *
-     * @param \Eccube\Entity\OAuth2\Client $client
+     * @param \Plugin\SampleApi\Entity\OAuth2\Client $client
      * @return RefreshToken
      */
-    public function setClient(\Eccube\Entity\OAuth2\Client $client = null)
+    public function setClient(\Plugin\SampleApi\Entity\OAuth2\Client $client = null)
     {
         $this->client = $client;
 
@@ -191,7 +191,7 @@ class RefreshToken extends \Eccube\Entity\AbstractEntity
     /**
      * Get client
      *
-     * @return \Eccube\Entity\OAuth2\Client
+     * @return \Plugin\SampleApi\Entity\OAuth2\Client
      */
     public function getClient()
     {
@@ -201,10 +201,10 @@ class RefreshToken extends \Eccube\Entity\AbstractEntity
     /**
      * Set user
      *
-     * @param \Eccube\Entity\OAuth2\User $user
+     * @param \Plugin\SampleApi\Entity\OAuth2\User $user
      * @return RefreshToken
      */
-    public function setUser(\Eccube\Entity\OAuth2\User $user = null)
+    public function setUser(\Plugin\SampleApi\Entity\OAuth2\User $user = null)
     {
         $this->user = $user;
 
@@ -214,7 +214,7 @@ class RefreshToken extends \Eccube\Entity\AbstractEntity
     /**
      * Get user
      *
-     * @return \Eccube\Entity\OAuth2\User
+     * @return \Plugin\SampleApi\Entity\OAuth2\User
      */
     public function getUser()
     {

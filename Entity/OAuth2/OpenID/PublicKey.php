@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Entity\OAuth2\OpenID;
+namespace Plugin\SampleApi\Entity\OAuth2\OpenID;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,7 +30,7 @@ class PublicKey extends \Eccube\Entity\AbstractEntity
     private $encryption_algorithm;
 
     /**
-     * @var \Eccube\Entity\OAuth2\OpenID\UserInfo
+     * @var \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo
      */
     private $UserInfo;
 
@@ -117,10 +117,10 @@ class PublicKey extends \Eccube\Entity\AbstractEntity
     /**
      * Set UserInfo
      *
-     * @param \Eccube\Entity\OAuth2\OpenID\UserInfo $userInfo
+     * @param \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo $userInfo
      * @return PublicKey
      */
-    public function setUserInfo(\Eccube\Entity\OAuth2\OpenID\UserInfo $userInfo = null)
+    public function setUserInfo(\Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo $userInfo = null)
     {
         $this->UserInfo = $userInfo;
 
@@ -130,7 +130,7 @@ class PublicKey extends \Eccube\Entity\AbstractEntity
     /**
      * Get UserInfo
      *
-     * @return \Eccube\Entity\OAuth2\OpenID\UserInfo
+     * @return \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo
      */
     public function getUserInfo()
     {

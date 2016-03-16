@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Entity\OAuth2\OpenID;
+namespace Plugin\SampleApi\Entity\OAuth2\OpenID;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -110,7 +110,7 @@ class UserInfo extends \Eccube\Entity\AbstractEntity
     private $updated_at;
 
     /**
-     * @var \Eccube\Entity\OAuth2\OpenID\UserInfoAddress
+     * @var \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress
      */
     private $address;
 
@@ -575,10 +575,10 @@ class UserInfo extends \Eccube\Entity\AbstractEntity
     /**
      * Set address
      *
-     * @param \Eccube\Entity\OAuth2\OpenID\UserInfoAddress $address
+     * @param \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress $address
      * @return UserInfo
      */
-    public function setAddress(\Eccube\Entity\OAuth2\OpenID\UserInfoAddress $address = null)
+    public function setAddress(\Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress $address = null)
     {
         $this->address = $address;
 
@@ -588,7 +588,7 @@ class UserInfo extends \Eccube\Entity\AbstractEntity
     /**
      * Get address
      *
-     * @return \Eccube\Entity\OAuth2\OpenID\UserInfoAddress
+     * @return \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress
      */
     public function getAddress()
     {

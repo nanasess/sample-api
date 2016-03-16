@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\OpenID\PublicKey:
+Plugin\SampleApi\Entity\OAuth2\OpenID\PublicKey:
   type: entity
   table: dtb_oauth_openid_public_keys
-  repositoryClass:  Eccube\Repository\OAuth2\OpenID\PublicKeyRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\OpenID\PublicKeyRepository
   id:
     id:
       type:   integer
@@ -20,7 +20,7 @@ Eccube\Entity\OAuth2\OpenID\PublicKey:
       default:    "RS256"
   oneToOne:
     UserInfo:
-      targetEntity: Eccube\Entity\OAuth2\OpenID\UserInfo
+      targetEntity: Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo
       joinColumn:
         name:                 userinfo_id
         referencedColumnName: id

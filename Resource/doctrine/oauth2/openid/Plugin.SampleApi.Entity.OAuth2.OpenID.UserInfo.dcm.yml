@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\OpenID\UserInfo:
+Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo:
   type: entity
   table: dtb_oauth_openid_userinfo
-  repositoryClass:  Eccube\Repository\OAuth2\OpenID\UserInfoRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\OpenID\UserInfoRepository
   id:
     id:
       type:   integer
@@ -94,7 +94,7 @@ Eccube\Entity\OAuth2\OpenID\UserInfo:
           - preferred_username
   oneToOne:
     address:
-      targetEntity: Eccube\Entity\OAuth2\OpenID\UserInfoAddress
+      targetEntity: Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress
       joinColumn:
         name:                 address_id
         referencedColumnName: id

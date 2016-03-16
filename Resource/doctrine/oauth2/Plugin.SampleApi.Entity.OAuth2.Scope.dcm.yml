@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\Scope:
+Plugin\SampleApi\Entity\OAuth2\Scope:
   type: entity
   table: dtb_oauth_scopes
-  repositoryClass:  Eccube\Repository\OAuth2\ScopeRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\ScopeRepository
   id:
     id:
       type:   integer

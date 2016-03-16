@@ -1,14 +1,14 @@
-Eccube\Entity\OAuth2\AccessToken:
+Plugin\SampleApi\Entity\OAuth2\AuthorizationCode:
   type:             entity
-  table:            dtb_oauth_access_tokens
-  repositoryClass:  Eccube\Repository\OAuth2\AccessTokenRepository
+  table:            dtb_oauth_authorization_codes
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\AuthorizationCodeRepository
   id:
     id:
       type:   integer
       generator:
         strategy: AUTO
   fields:
-    token:
+    code:
       type:       string
       length: 40
       unique:     true
@@ -19,18 +19,25 @@ Eccube\Entity\OAuth2\AccessToken:
       nullable:   true
     expires:
       type:       datetimetz
+    redirect_uri:
+      type:       string
+      length: 200
     scope:
       type:       string
       length: 4000
       nullable:   true
+    id_token:
+      type:       string
+      length: 1000
+      nullable:   true
   manyToOne:
     client:
-      targetEntity: Eccube\Entity\OAuth2\Client
+      targetEntity: Plugin\SampleApi\Entity\OAuth2\Client
       joinColumn:
         name:                 client_id
         referencedColumnName: id
     user:
-      targetEntity: Eccube\Entity\OAuth2\User
+      targetEntity: Plugin\SampleApi\Entity\OAuth2\User
       joinColumn:
         name:                 user_id
         referencedColumnName: id

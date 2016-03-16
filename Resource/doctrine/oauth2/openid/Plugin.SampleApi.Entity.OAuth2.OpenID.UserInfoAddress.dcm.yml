@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\OpenID\UserInfoAddress:
+Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress:
   type: entity
   table: dtb_oauth_openid_userinfo_address
-  repositoryClass:  Eccube\Repository\OAuth2\OpenID\UserInfoAddressRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\OpenID\UserInfoAddressRepository
   id:
     id:
       type:   integer

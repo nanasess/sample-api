@@ -1,7 +1,7 @@
-Eccube\Entity\OAuth2\Client:
+Plugin\SampleApi\Entity\OAuth2\Client:
   type:             entity
   table:            dtb_oauth_clients
-  repositoryClass:  Eccube\Repository\OAuth2\ClientRepository
+  repositoryClass:  Plugin\SampleApi\Repository\OAuth2\ClientRepository
   id:
     id:
       type:   integer

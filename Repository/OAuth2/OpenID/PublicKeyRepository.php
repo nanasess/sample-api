@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Repository\OAuth2\OpenID;
+namespace Plugin\SampleApi\Repository\OAuth2\OpenID;
 
 use Doctrine\ORM\EntityRepository;
 use OAuth2\Storage\PublicKeyInterface;
@@ -52,8 +52,8 @@ class PublicKeyRepository extends EntityRepository implements PublicKeyInterface
     public function getPublicKeyByClientId($client_id = null)
     {
         if ($client_id) {
-            $clientStorage  = $this->getEntityManager()->getRepository('Eccube\Entity\OAuth2\Client');
-            $userStorage = $this->getEntityManager()->getRepository('Eccube\Entity\OAuth2\OpenID\UserInfo');
+            $clientStorage  = $this->getEntityManager()->getRepository('Plugin\SampleApi\Entity\OAuth2\Client');
+            $userStorage = $this->getEntityManager()->getRepository('Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo');
             $Client = $clientStorage->findOneBy(array('client_identifier' => $client_id));
             if (!is_object($Client)) {
                 return null;
