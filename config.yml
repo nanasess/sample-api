@@ -4,3 +4,7 @@ version: 1.0.0
 event: SampleApiEvent
 service:
     - SampleApiServiceProvider
+orm.path:
+    - /Resource/doctrine
+    - /Resource/doctrine/oauth2
+    - /Resource/doctrine/oauth2/openid

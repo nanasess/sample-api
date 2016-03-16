@@ -20,6 +20,7 @@ use Monolog\Handler\FingersCrossedHandler;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Plugin\SampleApi\Form\Type\SampleApiConfigType;
+use Plugin\SampleApi\Form\Type\ApiClientType;
 use Silex\Application as BaseApplication;
 use Silex\ServiceProviderInterface;
 use Symfony\Component\Yaml\Yaml;
@@ -29,6 +30,12 @@ class SampleApiServiceProvider implements ServiceProviderInterface
 {
     public function register(BaseApplication $app)
     {
+        $ep = $app['controllers_factory'];
+        $ep->match('/OAuth2/token', 'Plugin\SampleApi\Controller\OAuth2\OAuth2Controller::token')->bind('oauth2_server_token');
+        $ep->match('/OAuth2/tokeninfo', 'Plugin\SampleApi\Controller\OAuth2\OAuth2Controller::tokeninfo')->bind('oauth2_server_tokeninfo');
+
+        $ep->match('/'.trim($app['config']['admin_route'], '/').'/OAuth2/authorize', 'Plugin\SampleApi\Controller\OAuth2\OAuth2Controller::authorize')->bind('oauth2_server_authorize');
+        $app->mount('/', $ep);
 
         $app['api.version'] = "v1";
         $app['api.endpoint'] = "/api";
@@ -66,6 +73,7 @@ class SampleApiServiceProvider implements ServiceProviderInterface
         // Form
         $app['form.types'] = $app->share($app->extend('form.types', function ($types) use ($app) {
             $types[] = new SampleApiConfigType($app);
+            $types[] = new ApiClientType($app['config']);
             return $types;
         }));
 

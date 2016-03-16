@@ -18,7 +18,7 @@ use Eccube\Event\EventArgs;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class SampleApiController
+class SampleApiController extends AbstractApiController
 {
 
     /**
@@ -31,6 +31,12 @@ class SampleApiController
     public function index(Application $app, Request $request)
     {
 
+        $server = $this->getServer($app);
+        // OAuth2 Authorization
+        $scope_reuqired= 'read';
+        if (!$this->verifyRequest($server, $scope_reuqired)) {
+            return $server->getResponse();
+        }
 
         $BaseInfo = $app['eccube.repository.base_info']->get();
 
@@ -147,9 +153,10 @@ class SampleApiController
 
         $Category = $searchForm->get('category_id')->getData();
 
-        return $app->json($qb->getQuery()->getArrayResult());
-
-
+        // Wrappered OAuth2 response
+        $Response = $server->getResponse();
+        $Response->setData($qb->getQuery()->getArrayResult());
+        return $Response;
     }
 
 }

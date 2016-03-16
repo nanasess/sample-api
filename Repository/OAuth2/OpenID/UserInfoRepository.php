@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\SampleApi\Repository\OAuth2;
+namespace Plugin\SampleApi\Repository\OAuth2\OpenID;
 
 use Doctrine\ORM\EntityRepository;
 use OAuth2\OpenID\Storage\UserClaimsInterface;
