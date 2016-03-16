@@ -1,0 +1,20 @@
+Eccube\Entity\OAuth2\Scope:
+  type: entity
+  table: dtb_oauth_scopes
+  repositoryClass:  Eccube\Repository\OAuth2\ScopeRepository
+  id:
+    id:
+      type:   integer
+      generator:
+        strategy: AUTO
+  fields:
+    scope:
+      type:   string
+      length: 80
+      unique: true
+    is_default:
+      type:   boolean
+  indexes:
+    scope_index:
+      columns:
+          - scope
