@@ -37,6 +37,13 @@ class SampleApiServiceProvider implements ServiceProviderInterface
         $ep->match('/'.trim($app['config']['admin_route'], '/').'/OAuth2/authorize', 'Plugin\SampleApi\Controller\OAuth2\OAuth2Controller::authorize')->bind('oauth2_server_authorize');
         $app->mount('/', $ep);
 
+        $m = $app['controllers_factory'];
+        $m->match('/setting/system/member/{member_id}/api', 'Plugin\SampleApi\Controller\ApiClientController::lists')->assert('member_id', '\d+')->bind('admin_api_lists');
+        $m->match('/setting/system/member/{member_id}/api/{client_id}/edit', 'Plugin\SampleApi\Controller\ApiClientController::edit')->assert('member_id', '\d+')->assert('client_id', '\d+')->bind('admin_setting_system_client_edit');
+        $m->delete('/setting/system/member/{member_id}/api/{client_id}/delete', 'Plugin\SampleApi\Controller\ApiClientController::delete')->assert('member_id', '\d+')->assert('client_id', '\d+')->bind('admin_setting_system_client_delete');
+        $m->match('/setting/system/member/{member_id}/api/new', 'Plugin\SampleApi\Controller\ApiClientController::newClient')->assert('member_id', '\d+')->bind('admin_setting_system_client_new');
+        $app->mount('/'.trim($app['config']['admin_route'], '/').'/', $m);
+
         $app['api.version'] = "v1";
         $app['api.endpoint'] = "/api";
 

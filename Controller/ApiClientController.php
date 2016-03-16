@@ -1,6 +1,6 @@
 <?php
 
-namespace Eccube\Controller;
+namespace Plugin\SampleApi\Controller;
 
 use Eccube\Application;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,14 +15,14 @@ class ApiClientController
     PUBLIC function lists(Application $app, Request $request, $member_id = null)
     {
         $entityManager = $app['orm.em'];
-        $clientStorage  = $entityManager->getRepository('Eccube\Entity\OAuth2\Client');
+        $clientStorage  = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\Client');
         $Member = $app['eccube.repository.member']->find($member_id);
         $Clients = $clientStorage->findBy(array('Member' => $Member));
 
         $builder = $app['form.factory']->createBuilder();
         $form = $builder->getForm();
 
-        return $app->render('Api/lists.twig', array(
+        return $app->render('SampleApi/Resource/template/admin/Api/lists.twig', array(
             'form' => $form->createView(),
             'Member' => $Member,
             'Clients' => $Clients,
@@ -32,9 +32,9 @@ class ApiClientController
     public function edit(Application $app, Request $request, $member_id = null, $client_id = null)
     {
         $entityManager = $app['orm.em'];
-        $clientStorage  = $entityManager->getRepository('Eccube\Entity\OAuth2\Client');
-        $keyStorage = $entityManager->getRepository('Eccube\Entity\OAuth2\OpenID\PublicKey');
-        $userStorage = $entityManager->getRepository('Eccube\Entity\OAuth2\OpenID\UserInfo');
+        $clientStorage  = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\Client');
+        $keyStorage = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\OpenID\PublicKey');
+        $userStorage = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo');
 
         $Member = $app['eccube.repository.member']->find($member_id);
         $Client = $clientStorage->find($client_id);
@@ -70,7 +70,7 @@ class ApiClientController
             );
         }
 
-        return $app->render('Api/edit.twig', array(
+        return $app->render('SampleApi/Resource/template/admin/Api/edit.twig', array(
             'form' => $form->createView(),
             'Member' => $Member,
             'Client' => $Client,
@@ -80,11 +80,11 @@ class ApiClientController
     public function newClient(Application $app, Request $request, $member_id = null)
     {
         $entityManager = $app['orm.em'];
-        $userStorage = $entityManager->getRepository('Eccube\Entity\OAuth2\OpenID\UserInfo');
-        $keyStorage = $entityManager->getRepository('Eccube\Entity\OAuth2\OpenID\PublicKey');
+        $userStorage = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo');
+        $keyStorage = $entityManager->getRepository('Plugin\SampleApi\Entity\OAuth2\OpenID\PublicKey');
 
         $Member = $app['eccube.repository.member']->find($member_id);
-        $Client = new \Eccube\Entity\OAuth2\Client();
+        $Client = new \Plugin\SampleApi\Entity\OAuth2\Client();
 
         $builder = $app['form.factory']->createBuilder('admin_api_client', $Client);
         $form = $builder->getForm();
@@ -96,7 +96,7 @@ class ApiClientController
             $PublicKey = null;
             $UserInfo = $userStorage->findOneBy(array('Member' => $Member));
             if (!is_object($UserInfo)) {
-                $UserInfo = new \Eccube\Entity\OAuth2\OpenID\UserInfo();
+                $UserInfo = new \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo();
                 $PublicKey = $keyStorage->findOneBy(array('UserInfo' => $UserInfo));
             }
 
@@ -119,7 +119,7 @@ class ApiClientController
 
                 $pubKey = openssl_pkey_get_details($openssl);
 
-                $PublicKey = new \Eccube\Entity\OAuth2\OpenID\PublicKey();
+                $PublicKey = new \Plugin\SampleApi\Entity\OAuth2\OpenID\PublicKey();
                 $PublicKey->setPublicKey($pubKey['key']);
                 $PublicKey->setPrivateKey($privKey);
                 $PublicKey->setEncryptionAlgorithm($form['encryption_algorithm']->getData());
@@ -133,7 +133,7 @@ class ApiClientController
 
             $UserInfo->setPreferredUsername($Member->getUsername());
             $UserInfo->setMember($Member);
-            $UserInfoAdderss = new \Eccube\Entity\OAuth2\OpenID\UserInfoAddress();
+            $UserInfoAdderss = new \Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress();
             $app['orm.em']->persist($UserInfoAdderss);
             $app['orm.em']->flush($UserInfoAdderss);
             $UserInfo->setAddress($UserInfoAdderss);
@@ -152,7 +152,7 @@ class ApiClientController
             );
         }
 
-        return $app->render('Api/edit.twig', array(
+        return $app->render('SampleApi/Resource/template/admin/Api/edit.twig', array(
             'form' => $form->createView(),
             'Member' => $Member,
             'Client' => $Client,
