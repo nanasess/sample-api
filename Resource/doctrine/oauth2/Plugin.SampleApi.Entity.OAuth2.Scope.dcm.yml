@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\Scope:
   type: entity
-  table: dtb_oauth_scopes
+  table: plg_oauth2_scopes
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\ScopeRepository
   id:
     id:

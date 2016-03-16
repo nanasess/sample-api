@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress:
   type: entity
-  table: dtb_oauth_openid_userinfo_address
+  table: plg_oauth2_openid_userinfo_address
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\OpenID\UserInfoAddressRepository
   id:
     id:

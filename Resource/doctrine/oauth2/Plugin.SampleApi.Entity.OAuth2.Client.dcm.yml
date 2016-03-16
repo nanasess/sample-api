@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\Client:
   type:             entity
-  table:            dtb_oauth_clients
+  table:            plg_oauth2_clients
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\ClientRepository
   id:
     id:
