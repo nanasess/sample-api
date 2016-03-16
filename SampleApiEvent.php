@@ -18,6 +18,7 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
+use Symfony\Component\DomCrawler\Crawler;
 
 class SampleApiEvent
 {
@@ -147,5 +148,18 @@ class SampleApiEvent
     {
         error_log('onRouteTerminate');
     }
-
+    public function onRouteAdminMemberResponse(FilterResponseEvent $event)
+    {
+        $request = $event->getRequest();
+        $response = $event->getResponse();
+        $html = $response->getContent();
+        $crawler = new Crawler($html);
+        $oldElement= $crawler->filter('#common_button_box__insert_button');
+        $oldHtml= $oldElement->html();
+        $newHtml= $oldHtml.'<button class="btn btn-primary btn-block btn-lg" onclick="window.location.href=\'api\';">APIクライアント一覧</button>';
+        $html = $crawler->html();
+        $html =str_replace($oldHtml, $newHtml, $html);
+        $response->setContent($html);
+        $event->setResponse($response);
+    }
 }

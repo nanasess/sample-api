@@ -38,3 +38,5 @@ eccube.event.route.homepage.exception:
   - [onRouteException, NORMAL]
 eccube.event.route.homepage.terminate:
   - [onRouteTerminate, NORMAL]
+eccube.event.route.admin_setting_system_member_edit.response:
+  - [onRouteAdminMemberResponse, NORMAL]
