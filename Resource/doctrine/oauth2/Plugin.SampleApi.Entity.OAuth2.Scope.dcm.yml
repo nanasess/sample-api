@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\Scope:
   type: entity
-  table: plg_oauth2_scopes
+  table: plg_oauth2_scope
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\ScopeRepository
   id:
     id:
@@ -15,6 +15,6 @@ Plugin\SampleApi\Entity\OAuth2\Scope:
     is_default:
       type:   boolean
   indexes:
-    scope_index:
+    plg_oauth2_scope_index:
       columns:
           - scope

@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\User:
   type: entity
-  table: plg_oauth2_users
+  table: plg_oauth2_user
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\UserRepository
   id:
     id:
@@ -15,6 +15,6 @@ Plugin\SampleApi\Entity\OAuth2\User:
     password:
       type:   string
   indexes:
-    email_index:
+    plg_oauth2_user_email_index:
       columns:
           - email

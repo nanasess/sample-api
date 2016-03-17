@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\AccessToken:
   type:             entity
-  table:            plg_oauth2_access_tokens
+  table:            plg_oauth2_access_token
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\AccessTokenRepository
   id:
     id:

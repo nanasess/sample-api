@@ -1,6 +1,6 @@
 Plugin\SampleApi\Entity\OAuth2\RefreshToken:
   type:             entity
-  table:            plg_oauth2_refresh_tokens
+  table:            plg_oauth2_refresh_token
   repositoryClass:  Plugin\SampleApi\Repository\OAuth2\RefreshTokenRepository
   id:
     id:

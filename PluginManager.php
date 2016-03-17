@@ -27,6 +27,10 @@ class PluginManager extends AbstractPluginManager
      */
     private $target;
 
+    /**
+     * @var array エンティティクラスの配列
+     */
+    private $classes;
 
     public function __construct()
     {
@@ -34,6 +38,18 @@ class PluginManager extends AbstractPluginManager
         $this->origin = __DIR__ . '/Resource/swagger-ui';
         // コピー先のディレクトリ
         $this->target = __DIR__ . '/../../../html/plugin/swagger-ui';
+
+        $this->classes = array(
+            '\Plugin\SampleApi\Entity\OAuth2\AuthorizationCode',
+            '\Plugin\SampleApi\Entity\OAuth2\User',
+            '\Plugin\SampleApi\Entity\OAuth2\Scope',
+            '\Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo',
+            '\Plugin\SampleApi\Entity\OAuth2\OpenID\PublicKey',
+            '\Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfoAddress',
+            '\Plugin\SampleApi\Entity\OAuth2\RefreshToken',
+            '\Plugin\SampleApi\Entity\OAuth2\AccessToken',
+            '\Plugin\SampleApi\Entity\OAuth2\Client'
+        );
     }
 
     /**
@@ -47,6 +63,7 @@ class PluginManager extends AbstractPluginManager
     {
         // リソースファイルのコピー
         $this->copyAssets();
+        $this->migrationSchema($app, __DIR__.'/Resource/doctrine/migrations', $config['code']);
     }
 
     /**
@@ -59,6 +76,7 @@ class PluginManager extends AbstractPluginManager
     {
         // リソースファイルの削除
         $this->removeAssets();
+        $this->migrationSchema($app, __DIR__.'/Resource/doctrine/migrations', $config['code'], 0);
     }
 
     /**

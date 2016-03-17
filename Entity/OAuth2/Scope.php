@@ -80,4 +80,14 @@ class Scope extends \Eccube\Entity\AbstractEntity
     {
         return $this->is_default;
     }
+
+    public function setDefault($default)
+    {
+        return $this->setIsDefault($default);
+    }
+
+    public function isDefault()
+    {
+        return $this->getIsDefault();
+    }
 }

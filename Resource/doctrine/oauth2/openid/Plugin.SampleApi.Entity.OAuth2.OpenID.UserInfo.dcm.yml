@@ -86,10 +86,10 @@ Plugin\SampleApi\Entity\OAuth2\OpenID\UserInfo:
         type: datetimetz
         nullable: false
   indexes:
-    email_index:
+    plg_oauth2_userinfo_email_index:
       columns:
           - email
-    preferred_username_index:
+    plg_oauth2_userinfo_preferred_username_index:
       columns:
           - preferred_username
   oneToOne:
