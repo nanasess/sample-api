@@ -5,16 +5,9 @@
     "firebase/php-jwt": "~2.2",
     "bshaffer/oauth2-server-httpfoundation-bridge": "~1.1",
     "bshaffer/oauth2-server-php": "~1.8",
-    "jdesrosiers/silex-swagger-provider": "~1.0",
-    "doctrine/lexer": "*",
-    "doctrine/annotations": "*",
-    "zircote/swagger-php": "*",
-    "psr/log": "*",
-    "symfony/debug": ">=2.7,<2.8",
-    "symfony/http-kernel": ">=2.7,<2.8",
-    "symfony/http-foundation": ">=2.7,<2.8",
-    "symfony/event-dispatcher": ">=2.7,<2.8",
-    "pimple/pimple": "*",
-    "silex/silex": "*"
+    "symfony/http-foundation": ">=2.7,<2.8"
+  },
+  "provide": {
+    "symfony/http-foundation": "*"
   }
 }
